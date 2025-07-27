@@ -1,28 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
     <title>Guess the Number</title>
+
+    <!-- Mobile Responsive Meta Tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
-<body>
-    <h1>🎯 Guess a number between 1 and 100</h1>
+<body class="bg-light d-flex align-items-center" style="min-height: 100vh;">
 
-    {% if not game_over %}
-    <form method="POST">
-        <input type="number" name="guess" placeholder="Enter your guess" required>
-        <input type="hidden" name="secret_number" value="{{ secret_number }}">
-        <input type="hidden" name="current_try" value="{{ current_try }}">
-        <button type="submit">Submit</button>
-    </form>
-    {% else %}
-    <p>🔒 Game over.</p>
-    <form method="GET">
-        <button type="submit">🔄 Play Again</button>
-    </form>
-    {% endif %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-sm-10">
+                <div class="card shadow p-4">
+                    <h1 class="text-center mb-4">🎯 Guess a number between 1 and 100</h1>
 
-    <p>{{ message }}</p>
+                    {% if not game_over %}
+                    <form method="POST">
+                        <div class="mb-3">
+                            <input type="number" name="guess" class="form-control" placeholder="Enter your guess"
+                                required>
+                        </div>
+                        <input type="hidden" name="secret_number" value="{{ secret_number }}">
+                        <input type="hidden" name="current_try" value="{{ current_try }}">
+                        <button type="submit" class="btn btn-primary w-100">Submit</button>
+                    </form>
+                    {% else %}
+                    <p class="text-center text-muted">🔒 Game over.</p>
+                    <form method="GET">
+                        <button type="submit" class="btn btn-secondary w-100">🔄 Play Again</button>
+                    </form>
+                    {% endif %}
+
+                    <p class="mt-3 text-center">{{ message }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 
 </html>
