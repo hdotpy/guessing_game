@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Guess the Number</title>
+</head>
+
+<body>
+    <h1>🎯 Guess a number between 1 and 100</h1>
+
+    {% if not game_over %}
+    <form method="POST">
+        <input type="number" name="guess" placeholder="Enter your guess" required>
+        <input type="hidden" name="secret_number" value="{{ secret_number }}">
+        <input type="hidden" name="current_try" value="{{ current_try }}">
+        <button type="submit">Submit</button>
+    </form>
+    {% else %}
+    <p>🔒 Game over.</p>
+    <form method="GET">
+        <button type="submit">🔄 Play Again</button>
+    </form>
+    {% endif %}
+
+    <p>{{ message }}</p>
+</body>
+
+</html>
